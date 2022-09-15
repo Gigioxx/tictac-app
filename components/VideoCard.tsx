@@ -28,6 +28,12 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
     }
   };
 
+  useEffect(() => {
+    if (videoRef?.current) {
+      videoRef.current.muted = isVideoMuted;
+    }
+  }, [isVideoMuted]);
+
   return (
     <div className='flex flex-col border-b-2 border-gray-200 pb-6'>
       <div>
@@ -47,7 +53,7 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
             </Link>
           </div>
           <div>
-            <Link href=''>
+            <Link href='/'>
               <div className='flex items-center gap-2'>
                 <p className='flex gap-2 items-center md:text-md font-bold text-primary'>
                   {post.postedBy.userName} {` `}
